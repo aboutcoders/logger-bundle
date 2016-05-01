@@ -1,0 +1,5 @@
+default:
+    type: rest
+    prefix: /
+    resource: "@AbcLoggerBundle/Controller/LogController.php"
+    name_prefix:  api_

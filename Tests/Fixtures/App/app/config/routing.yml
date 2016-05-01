@@ -1,0 +1,4 @@
+rest:
+    type: rest
+    resource: "@AbcLoggerBundle/Resources/config/routing/rest.yml"
+    prefix: /api
