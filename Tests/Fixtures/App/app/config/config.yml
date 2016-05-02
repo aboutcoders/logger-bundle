@@ -14,6 +14,8 @@ framework:
     translator: { fallback: en }
     profiler: { only_exceptions: false }
     validation: { enable_annotations: true }
+    serializer:
+        enabled: true
 
 monolog:
     channels: ['foobar_channel']

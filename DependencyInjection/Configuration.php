@@ -29,6 +29,7 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->arrayNode('applications')
                     ->requiresAtLeastOneElement()
+                    ->normalizeKeys(false)
                     ->prototype('array')
                         ->children()
                             ->scalarNode('channel')->end()
