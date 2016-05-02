@@ -37,7 +37,7 @@ class LogControllerTest extends WebTestCase
         $this->assertEquals(204, $client->getResponse()->getStatusCode());
         $this->assertEmpty($client->getResponse()->getContent());
 
-        $filename = static::$kernel->getLogDir().'/test.log';
+        $filename = static::$kernel->getLogDir().'/foobar.log';
 
         $this->assertFileExists($filename);
         $this->assertContains('This is a log message', file_get_contents($filename));

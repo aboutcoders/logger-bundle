@@ -59,7 +59,7 @@ class RegisterApplicationsPass implements CompilerPassInterface
 
         foreach ($applications as $application => $appConfig) {
 
-            $logger = $container->findDefinition('monolog.logger');
+            $logger = $container->findDefinition('monolog.logger.' . $appConfig['channel']);
 
             // in symfony version <= 2.7 we get an error if class name of definition is not set
             if (version_compare(Kernel::VERSION, '2.8.0', '<')) {

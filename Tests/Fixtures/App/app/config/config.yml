@@ -24,6 +24,11 @@ monolog:
             type:     stream
             path:     "%kernel.logs_dir%/%kernel.environment%.log"
             level:    debug
+        foobar:
+            type:     stream
+            path:     "%kernel.logs_dir%/foobar.log"
+            level:    debug
+            channels: ['foobar']
 
 # Twig Configuration
 twig:
