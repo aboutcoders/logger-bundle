@@ -16,11 +16,17 @@ framework:
     validation: { enable_annotations: true }
 
 monolog:
+    channels: ['foobar_channel']
     handlers:
         main:
             type:     stream
             path:     "%kernel.logs_dir%/%kernel.environment%.log"
             level:    debug
+        foobar:
+            type:     stream
+            path:     "%kernel.logs_dir%/foobar.log"
+            level:    debug
+            channels: ['foobar_channel']
 
 # Twig Configuration
 twig:
@@ -55,3 +61,8 @@ fos_rest:
     exception:
         messages:
             'Exception': true
+
+abc_logger:
+    applications:
+        foobar:
+            channel: foobar_channel

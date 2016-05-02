@@ -13,7 +13,6 @@ namespace Abc\Bundle\LoggerBundle\Tests\Integration;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @author Hannes Schulz <hannes.schulz@aboutcoders.com>
@@ -56,12 +55,8 @@ class ServiceConfigurationTest extends KernelTestCase
      */
     public function getServices()
     {
-        return [];
-    }
-
-
-    public function testPass()
-    {
-        $this->assertTrue(true);
+        return [
+            ['abc.logger.registry', 'Abc\Bundle\LoggerBundle\Logger\Registry']
+        ];
     }
 }

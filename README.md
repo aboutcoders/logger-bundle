@@ -3,4 +3,62 @@ AbcLoggerBundle
 
 A symfony bundle to log messages from external client applications using Monolog.
 
-**Note: Do not use this bundle yet, we're just starting!**
+## Installation
+
+Add the AbcLoggerBundle to your `composer.json` file
+
+```json
+{
+    "require": {
+        "aboutcoders/logger-bundle": "dev-master"
+    }
+}
+```
+
+Then include the bundle in the AppKernel.php class
+
+```php
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new Abc\Bundle\LoggerBundle\AbcLoggerBundle(),
+    );
+
+    return $bundles;
+}
+```
+
+Import the routing files
+
+```yaml
+abc-rest-logger:
+    type: rest
+    resource: "@AbcLoggerBundle/Resources/config/routing/rest.yml"
+    prefix: /api
+```
+
+Finally unless you do not already use it, follow the installation instructions of the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle). This bundle is used to generate a documentation of the available API methods.
+
+## Configuration
+
+All you need to do is configure the names of the applications which are allowed to log and configure the Monolog logging channel to use for each of them. Please refer to the [offical symfony documentation](http://symfony.com/doc/current/cookbook/logging/channels_handlers.html) on how-to define custom channels or log to different files.
+
+```yaml
+abc_logger:
+    applications:
+        my_application:
+            channel: my_channel
+```
+
+## Usage
+
+With the above configuration example you can now post log entries to the following url: [http://localhost/api/log/my_application](http://localhost/api/log/my_application)
+
+The request body must contain the following parameters:
+
+* `level`: The log level [emergency|alert|critical|error|warning|notice|info|debug]
+* `message`: The log message
+* `context`: An array of context data as defined by [https://github.com/Seldaek/monolog](Monolog)
+
+Please refer to the API documentation that can be generated with the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) to get detailed information on the expected request body.

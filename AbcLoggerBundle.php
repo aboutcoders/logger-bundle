@@ -1,6 +1,6 @@
 <?php
 /*
-* This file is part of the logger-bundle package.
+*  This file is part of the logger-bundle package.
 *
 * (c) Hannes Schulz <hannes.schulz@aboutcoders.com>
 *
@@ -10,7 +10,7 @@
 
 namespace Abc\Bundle\LoggerBundle;
 
-use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
+use Abc\Bundle\LoggerBundle\DependencyInjection\Compiler\RegisterApplicationsPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -19,11 +19,11 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class AbcLoggerBundle extends Bundle
 {
-
     /**
      * {@inheritdoc}
      */
     public function build(ContainerBuilder $container)
     {
+        $container->addCompilerPass(new RegisterApplicationsPass());
     }
 }

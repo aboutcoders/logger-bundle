@@ -20,8 +20,6 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  */
 class AbcLoggerExtension extends Extension
 {
-    const NAMESPACE_PREFIX = 'abc.logger.';
-
     /**
      * {@inheritDoc}
      */
@@ -31,5 +29,10 @@ class AbcLoggerExtension extends Extension
         $config        = $this->processConfiguration($configuration, $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config/services'));
+        $loader->load('services.xml');
+
+        if (is_array($config['applications'])) {
+            $container->setParameter('abc.logger.applications', $config['applications']);
+        }
     }
 }

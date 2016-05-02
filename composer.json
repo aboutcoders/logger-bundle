@@ -1,7 +1,7 @@
 {
     "name": "aboutcoders/logger-bundle",
     "type": "symfony-bundle",
-    "description": "A symfony bundle to log messages from external applications",
+    "description": "A symfony bundle to log messages from external applications over a REST API",
     "keywords": ["log", "logger", "client", "rest", "bundle"],
     "homepage": "http://aboutcoders.com",
     "license": "MIT",
@@ -14,7 +14,6 @@
     "require": {
         "php": ">=5.4.0",
         "symfony/symfony": "~2.6|~3.0",
-        "jms/serializer-bundle": "~1.0",
         "nelmio/api-doc-bundle": "~2"
     },
     "require-dev": {

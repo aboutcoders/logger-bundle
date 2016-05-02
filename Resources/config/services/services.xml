@@ -5,6 +5,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+
+        <service id="abc.logger.registry" class="Abc\Bundle\LoggerBundle\Logger\Registry"/>
+
     </services>
 
 </container>

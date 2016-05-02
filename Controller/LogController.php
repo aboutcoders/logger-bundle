@@ -10,13 +10,13 @@
 
 namespace Abc\Bundle\LoggerBundle\Controller;
 
+use Abc\Bundle\LoggerBundle\Logger\Registry;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\RequestParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Psr\Log\LoggerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
@@ -31,47 +31,37 @@ class LogController extends FOSRestController
      * @ApiDoc(
      *   section="AbcLoggerBundle",
      *   statusCodes = {
-     *     200 = "Returned on success",
+     *     204 = "Returned on success",
      *     400 = "Returned in case of a validation error"
      *   }
      * )
      *
-     * @Post("/log")
+     * @Post("/log/{application}")
      *
      * @RequestParam(name="level", requirements="(emergency|alert|critical|error|warning|notice|info|debug)", description="The log level", strict=true, nullable=false)
      * @RequestParam(name="message", description="The log message", strict=true, nullable=false)
-     * @RequestParam(name="context", description="The context array", strict=true, array=true, nullable=true)
+     * @RequestParam(name="context", description="The context array", array=true, nullable=true)
      *
-     * @param string  $application
+     * @param string $application The name of the client application
      * @param ParamFetcherInterface $paramFetcher
+     * @return void
      */
-    public function postAction(ParamFetcherInterface $paramFetcher)
+    public function logAction($application, ParamFetcherInterface $paramFetcher)
     {
-        return;
-
-        $application = 'foo';
-
         $level   = $paramFetcher->get('level');
         $message = $paramFetcher->get('message');
         $context = $paramFetcher->get('context');
 
-        $this->getLogger($application)->log($level, $message, $context);
+        $this->getRegistry()->get($application)->log($level, $message, $context);
+
+        return null;
     }
 
     /**
-     * @param string $application
-     * @return LoggerInterface
+     * @return Registry
      */
-    protected function getLogger($application)
+    protected function getRegistry()
     {
-        return $this->get('logger');
-    }
-
-    /**
-     * @return ValidatorInterface
-     */
-    protected function getValidator()
-    {
-        return $this->get('validator');
+        return $this->get('abc.logger.registry');
     }
 }

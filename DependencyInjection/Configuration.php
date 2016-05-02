@@ -25,7 +25,17 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('abc_logger');
+        $treeBuilder->root('abc_logger')
+            ->children()
+                ->arrayNode('applications')
+                    ->requiresAtLeastOneElement()
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('channel')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
         
         return $treeBuilder;
     }
