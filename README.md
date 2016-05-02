@@ -1,7 +1,7 @@
 AbcLoggerBundle
 ===============
 
-A symfony bundle to log messages from external client applications using Monolog.
+A symfony bundle to log messages from external client applications using [Monolog](https://github.com/Seldaek/monolog).
 
 Build Status: [![Build Status](https://travis-ci.org/aboutcoders/logger-bundle.svg?branch=master)](https://travis-ci.org/aboutcoders/logger-bundle)
 
@@ -61,6 +61,6 @@ The request body must contain the following parameters:
 
 * `level`: The log level [emergency|alert|critical|error|warning|notice|info|debug]
 * `message`: The log message
-* `context`: An array of context data as defined by [https://github.com/Seldaek/monolog](Monolog)
+* `context`: An array of context data as defined by [Monolog](https://github.com/Seldaek/monolog)
 
 Please refer to the API documentation that can be generated with the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) to get detailed information on the expected request body.
