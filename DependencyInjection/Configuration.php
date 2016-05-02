@@ -26,5 +26,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('abc_logger');
+        
+        return $treeBuilder;
     }
 }

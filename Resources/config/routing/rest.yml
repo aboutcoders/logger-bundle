@@ -1,0 +1,4 @@
+post_log:
+    type: rest
+    prefix: /
+    resource: "@AbcLoggerBundle/Controller/LogController.php"
