@@ -3,6 +3,8 @@ AbcLoggerBundle
 
 A symfony bundle to log messages from external client applications using Monolog.
 
+Build Status: [![Build Status](https://travis-ci.org/aboutcoders/logger-bundle.svg?branch=master)](https://travis-ci.org/aboutcoders/logger-bundle)
+
 ## Installation
 
 Add the AbcLoggerBundle to your `composer.json` file
