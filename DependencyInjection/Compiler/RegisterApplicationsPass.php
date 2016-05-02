@@ -12,7 +12,7 @@ namespace Abc\Bundle\LoggerBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * @author Hannes Schulz <hannes.schulz@aboutcoders.com>
@@ -58,7 +58,14 @@ class RegisterApplicationsPass implements CompilerPassInterface
         $applications = $container->getParameter($this->applicationsParameter);
 
         foreach ($applications as $application => $appConfig) {
-            $logger = $container->findDefinition('monolog.logger.'.$appConfig['channel']);
+
+            $logger = $container->findDefinition('monolog.logger');
+
+            // in symfony version <= 2.7 we get an error if class name of definition is not set
+            if (version_compare(Kernel::VERSION, '2.8.0', '<')) {
+                $logger->setClass('Monolog\Logger');
+            }
+
             $registry->addMethodCall('register', [$application, $logger]);
         }
     }

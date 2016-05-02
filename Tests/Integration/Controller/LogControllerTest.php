@@ -11,6 +11,7 @@
 namespace Abc\Bundle\LoggerBundle\Tests\Integration\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpKernel\Kernel;
 
 class LogControllerTest extends WebTestCase
 {
@@ -36,7 +37,13 @@ class LogControllerTest extends WebTestCase
         $this->assertEquals(204, $client->getResponse()->getStatusCode());
         $this->assertEmpty($client->getResponse()->getContent());
 
-        $filename = static::$kernel->getLogDir().'/foobar.log';
+        // in symfony version <= 2.7 we get an error if class name of definition is not set
+        if (version_compare(Kernel::VERSION, '2.8.0', '<')) {
+            $filename = static::$kernel->getLogDir().'/test.log';
+        }
+        else{
+            $filename = static::$kernel->getLogDir().'/foobar.log';
+        }
 
         $this->assertFileExists($filename);
         $this->assertContains('This is a log message', file_get_contents($filename));
