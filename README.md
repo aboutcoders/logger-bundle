@@ -1,7 +1,7 @@
 AbcLoggerBundle
 ===============
 
-A symfony bundle to log messages from external client applications using [Monolog](https://github.com/Seldaek/monolog).
+A symfony bundle that provides a REST-API to log messages from external client applications using [Monolog](https://github.com/Seldaek/monolog).
 
 Build Status: [![Build Status](https://travis-ci.org/aboutcoders/logger-bundle.svg?branch=master)](https://travis-ci.org/aboutcoders/logger-bundle)
 
@@ -47,7 +47,7 @@ Finally follow the installation instructions of the required third party bundles
 
 ## Configuration
 
-All you need to do is configure the names of the applications which are allowed to log and configure the Monolog logging channel to use for each of them. Please refer to the [offical symfony documentation](http://symfony.com/doc/current/cookbook/logging/channels_handlers.html) on how-to define custom channels or log to different files.
+All you need to do is define the names of the applications which are allowed to log and configure the Monolog logging channel to use for each of them. Please refer to the [offical symfony documentation](http://symfony.com/doc/current/cookbook/logging/channels_handlers.html) on how-to define custom channels or log to different files.
 
 ```yaml
 abc_logger:
@@ -64,6 +64,6 @@ The request body must contain the following parameters:
 
 * `level`: The log level [emergency|alert|critical|error|warning|notice|info|debug]
 * `message`: The log message
-* `context`: An array of context data as defined by [Monolog](https://github.com/Seldaek/monolog)
+* `context`: Optional, an array of context data as defined by [Monolog](https://github.com/Seldaek/monolog)
 
-Please refer to the API documentation that can be generated with the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) to get detailed information on the expected request body.
+Please refer to the API documentation that can be generated with the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle) to get more detailed information about the API method.
