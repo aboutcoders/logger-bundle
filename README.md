@@ -12,7 +12,7 @@ Add the AbcLoggerBundle to your `composer.json` file
 ```json
 {
     "require": {
-        "aboutcoders/logger-bundle": "dev-master"
+        "aboutcoders/logger-bundle": "~1.0"
     }
 }
 ```
@@ -40,7 +40,10 @@ abc-rest-logger:
     prefix: /api
 ```
 
-Finally unless you do not already use it, follow the installation instructions of the [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle). This bundle is used to generate a documentation of the available API methods.
+Finally follow the installation instructions of the required third party bundles:
+* [SensioFrameworkExtraBundle](http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html)
+* [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle)
+* [FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle)
 
 ## Configuration
 
