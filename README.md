@@ -1,7 +1,7 @@
 AbcLoggerBundle
 ===============
 
-A symfony bundle that provides a REST-API to log messages from external client applications using [Monolog](https://github.com/Seldaek/monolog).
+A symfony bundle that provides a REST-API to log messages from external client applications.
 
 Build Status: [![Build Status](https://travis-ci.org/aboutcoders/logger-bundle.svg?branch=master)](https://travis-ci.org/aboutcoders/logger-bundle)
 
