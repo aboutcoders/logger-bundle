@@ -7,6 +7,11 @@ Build Status: [![Build Status](https://travis-ci.org/aboutcoders/logger-bundle.s
 
 ## Installation
 
+Follow the installation instructions of the required third party bundles:
+* [SensioFrameworkExtraBundle](http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html)
+* [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle)
+* [FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle)
+
 Add the AbcLoggerBundle to your `composer.json` file
 
 ```json
@@ -17,7 +22,7 @@ Add the AbcLoggerBundle to your `composer.json` file
 }
 ```
 
-Then include the bundle in the AppKernel.php class
+Include the bundle in the AppKernel.php class
 
 ```php
 public function registerBundles()
@@ -39,11 +44,6 @@ abc-rest-logger:
     resource: "@AbcLoggerBundle/Resources/config/routing/rest.yml"
     prefix: /api
 ```
-
-Finally follow the installation instructions of the required third party bundles:
-* [SensioFrameworkExtraBundle](http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html)
-* [NelmioApiDocBundle](https://github.com/nelmio/NelmioApiDocBundle)
-* [FOSRestBundle](https://github.com/FriendsOfSymfony/FOSRestBundle)
 
 ## Configuration
 
