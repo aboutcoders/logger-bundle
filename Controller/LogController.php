@@ -17,7 +17,6 @@ use FOS\RestBundle\Controller\Annotations\RequestParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @author Hannes Schulz <hannes.schulz@aboutcoders.com>
@@ -40,7 +39,7 @@ class LogController extends FOSRestController
      *
      * @RequestParam(name="level", requirements="(emergency|alert|critical|error|warning|notice|info|debug)", description="The log level", strict=true, nullable=false)
      * @RequestParam(name="message", description="The log message", strict=true, nullable=false)
-     * @RequestParam(name="context", description="The context array", array=true, nullable=true)
+     * @RequestParam(name="context", description="The context map", nullable=true)
      *
      * @param string $application The name of the client application
      * @param ParamFetcherInterface $paramFetcher
@@ -52,7 +51,7 @@ class LogController extends FOSRestController
         $message = $paramFetcher->get('message');
         $context = $paramFetcher->get('context');
 
-        $this->getRegistry()->get($application)->log($level, $message, $context);
+        $this->getRegistry()->get($application)->log($level, $message, $context == null ? [] : $context);
 
         return null;
     }

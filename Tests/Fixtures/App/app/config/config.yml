@@ -35,10 +35,6 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
 
-sensio_framework_extra:
-    request: { converters: true }
-    view:
-        annotations: false
 
 fos_rest:
     param_fetcher_listener: true

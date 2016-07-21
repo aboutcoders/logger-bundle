@@ -30,7 +30,7 @@ class LogControllerTest extends WebTestCase
     public function setUp()
     {
         $this->registry = $this->getMock('Abc\Bundle\LoggerBundle\Logger\Registry');
-        $this->logger = $this->getMock('Psr\Log\LoggerInterface');
+        $this->logger = $this->getMock(LoggerInterface::class);
     }
 
     /**
@@ -47,6 +47,7 @@ class LogControllerTest extends WebTestCase
 
         $this->registry->expects($this->once())
             ->method('get')
+            ->with($application)
             ->willReturn($this->logger);
 
         if(!isset($parameters['context']))
