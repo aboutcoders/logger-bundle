@@ -11,12 +11,13 @@
 namespace Abc\Bundle\LoggerBundle\Controller;
 
 use Abc\Bundle\LoggerBundle\Logger\Registry;
-use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\Post;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RequestParam;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Swagger\Annotations as SWG;
+use Nelmio\ApiDocBundle\Annotation\Operation;
 
 /**
  * @author Hannes Schulz <hannes.schulz@aboutcoders.com>
@@ -27,23 +28,34 @@ class LogController extends FOSRestController
     /**
      * Creates a log entry.
      *
-     * @ApiDoc(
-     *   section="AbcLoggerBundle",
-     *   statusCodes = {
-     *     204 = "Returned on success",
-     *     400 = "Returned in case of a validation error"
-     *   }
-     * )
-     *
-     * @Post("/log/{application}")
-     *
      * @RequestParam(name="level", requirements="(emergency|alert|critical|error|warning|notice|info|debug)", description="The log level", strict=true, nullable=false)
      * @RequestParam(name="message", description="The log message", strict=true, nullable=false)
      * @RequestParam(name="context", description="The context map", nullable=true)
      *
+     * @Operation(
+     *     tags={"AbcLoggerBundle"},
+     *     summary="Creates a log entry",
+     *     @SWG\Parameter(
+     *         name="body",
+     *         in="form",
+     *         required=true,
+     *         type="array"
+     *     ),
+     *     @SWG\Response(
+     *         response="200",
+     *         description="Returned when successful"
+     *     ),
+     *     @SWG\Response(
+     *         response="400",
+     *         description="Returned in case of a validation error"
+     *     )
+     * )
+     *
+     * @Post("/log/{application}")
+     *
      * @param string $application The name of the client application
      * @param ParamFetcherInterface $paramFetcher
-     * @return void
+     * @return null
      */
     public function logAction($application, ParamFetcherInterface $paramFetcher)
     {

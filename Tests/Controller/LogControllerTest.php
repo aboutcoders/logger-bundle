@@ -67,8 +67,8 @@ class LogControllerTest extends WebTestCase
             'POST',
             $url,
             $parameters,
-            array(),
-            array('CONTENT_TYPE' => 'application/json'),
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
             null,
             'json'
         );
@@ -97,8 +97,8 @@ class LogControllerTest extends WebTestCase
             'POST',
             $url,
             $parameters,
-            array(),
-            array('CONTENT_TYPE' => 'application/json'),
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
             null,
             'json'
         );
