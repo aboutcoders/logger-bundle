@@ -37,9 +37,14 @@ class LogController extends FOSRestController
      *     summary="Creates a log entry",
      *     @SWG\Parameter(
      *         name="body",
-     *         in="form",
+     *         in="body",
      *         required=true,
-     *         type="array"
+     *         @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(property="level", type="string"),
+     *              @SWG\Property(property="message", type="string"),
+     *              @SWG\Property(property="context", type="string")
+     *          )
      *     ),
      *     @SWG\Response(
      *         response="200",
